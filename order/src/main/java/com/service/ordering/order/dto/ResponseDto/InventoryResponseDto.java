@@ -1,8 +1,8 @@
 package com.service.ordering.order.dto.ResponseDto;
 
 
+import com.service.ordering.order.dto.CartItemDto;
 import com.service.ordering.order.dto.InventoryItemDto;
-import jakarta.persistence.criteria.CriteriaBuilder;
 import lombok.*;
 
 import java.util.List;
@@ -21,7 +21,7 @@ public class InventoryResponseDto {
         return inventoryItemList;
     }
 
-    public void setInventoryItemList(List<InventoryItemDto> inventoryItemList) {
+    public void setInventoryItemList(List<CartItemDto> inventoryItemList) {
         this.inventoryItemList = inventoryItemList;
     }
 }

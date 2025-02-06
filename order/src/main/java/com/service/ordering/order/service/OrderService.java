@@ -1,6 +1,7 @@
 package com.service.ordering.order.service;
 
 
+import com.service.ordering.order.Enum.Status;
 import com.service.ordering.order.dto.CartItemDto;
 import com.service.ordering.order.dto.InventoryItemDto;
 import com.service.ordering.order.dto.RequestDto.OrderRequestDto;
@@ -16,6 +17,7 @@ import com.service.ordering.order.repository.OrderRepo;
 import lombok.Builder;
 import lombok.NonNull;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
@@ -38,11 +40,18 @@ public class OrderService {
     @Autowired
     private IdentityServiceClient identityServiceClient;
 
+    @Value("${test:false}")
+    private boolean test;
+
     public OrderResponseDto createOrdering(@NonNull OrderRequestDto orderRequestDto){
 
-        //Step 1-> First check user by the api with Identity team , whether the user is valid or not.
-        /* get/UserValidation(orderRequestDto.getUserId()) , if the response is true then proceed further
-         * else return Exception -INVALIDUserException */
+        if (test) {
+            OrderResponseDto dummyResponse = new OrderResponseDto();
+            dummyResponse.setOrderId(11);
+            dummyResponse.setOrderStatus(Status.CREATED);
+            dummyResponse.setTotalAmount(900);
+            return dummyResponse;
+        }
 
         IdentityResponseDto user = identityServiceClient.checkUserValidation(orderRequestDto.getUserId());
         if(user.getEmail() == null){

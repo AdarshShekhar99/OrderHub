@@ -9,6 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -32,8 +33,30 @@ public class InventoryServiceClient {
     public InventoryResponseDto getItemsAvailability(List<CartItemDto> cartItemDto){
 
         if (test) {
-            InventoryResponseDto dummyResponse = new InventoryResponseDto();
 
+            InventoryResponseDto dummyResponse = new InventoryResponseDto();
+            List<CartItemDto> dummyItems = new ArrayList<>();
+
+
+            if (cartItemDto != null && !cartItemDto.isEmpty()) {
+                dummyItems.addAll(cartItemDto);
+            }
+
+
+            CartItemDto testItem1 = new CartItemDto();
+            testItem1.setProductId(11);
+            testItem1.setQuantity(10);
+
+
+            CartItemDto testItem2 = new CartItemDto();
+            testItem2.setProductId(12);
+            testItem2.setQuantity(5);
+
+
+            dummyItems.add(testItem1);
+            dummyItems.add(testItem2);
+
+            dummyResponse.setInventoryItemList(dummyItems);
             return dummyResponse;
         }
 
@@ -41,7 +64,7 @@ public class InventoryServiceClient {
 
         ResponseEntity<InventoryResponseDto> response = restTemplate.postForEntity(url, cartItemDto, InventoryResponseDto.class);
 
-        // test will be written by adarsh shekhar
+
         return response.getBody();
     }
 
