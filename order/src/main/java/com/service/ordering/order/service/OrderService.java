@@ -3,12 +3,10 @@ package com.service.ordering.order.service;
 
 import com.service.ordering.order.Enum.Status;
 import com.service.ordering.order.dto.CartItemDto;
-import com.service.ordering.order.dto.InventoryItemDto;
 import com.service.ordering.order.dto.RequestDto.OrderRequestDto;
 import com.service.ordering.order.dto.ResponseDto.IdentityResponseDto;
 import com.service.ordering.order.dto.ResponseDto.InventoryResponseDto;
 import com.service.ordering.order.dto.ResponseDto.OrderResponseDto;
-import com.service.ordering.order.entity.Order;
 import com.service.ordering.order.exception.CartEmptyException;
 import com.service.ordering.order.exception.InvalidUserException;
 import com.service.ordering.order.exception.InventoryServiceException;
@@ -113,7 +111,7 @@ public class OrderService {
     }
 
 
-    public Optional<String> compareInventoryItems(List<CartItemDto> cartList , List<InventoryItemDto> inventoryList){
+    public Optional<String> compareInventoryItems(List<CartItemDto> cartList , List<CartItemDto> inventoryList){
 
         // here we are considering that both the list is of same size because the inventory team will only return
         // those products that are in cart.*/

@@ -25,14 +25,7 @@ public class IdentityServiceClient {
     }
 
     public IdentityResponseDto checkUserValidation(Integer userId){
-        if (test) {
-            IdentityResponseDto dummyResponse = new IdentityResponseDto();
-            dummyResponse.setUserId(01);
-            dummyResponse.setUserName("Kumar");
-            dummyResponse.setLocation("Gurgaon");
-            dummyResponse.setEmail("kumar@gmail.com");
-            return dummyResponse;
-        }
+
 
         String url = identityClientUrl + "/identity/" + userId;
 

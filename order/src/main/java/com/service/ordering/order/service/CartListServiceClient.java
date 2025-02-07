@@ -37,7 +37,7 @@ public class CartListServiceClient {
             // Create a dummy CartItemDto and set its test values.
             CartItemDto dummyItem = new CartItemDto();
             dummyItem.setProductId(101);
-            dummyItem.setQuantity(1);
+            dummyItem.setQuantity(10);
             // Populate additional fields if required.
 
             dummyItems.add(dummyItem);

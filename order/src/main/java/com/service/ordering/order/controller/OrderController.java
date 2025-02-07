@@ -24,14 +24,7 @@ public class OrderController {
 
     @PostMapping("/create")
     public ResponseEntity<OrderResponseDto> createOrder(@RequestBody OrderRequestDto orderRequestDto){
-        if (test) {
-            OrderResponseDto dummyResponse = new OrderResponseDto();
-            dummyResponse.setOrderId(101);
-            dummyResponse.setOrderStatus(Status.CREATED);
-            dummyResponse.setTotalAmount(1000);
-            // Populate additional dummy fields as needed.
-            return new ResponseEntity<>(dummyResponse, HttpStatus.CREATED);
-        }
+
 
         OrderResponseDto systemResponse = orderService.createOrdering(orderRequestDto);
 

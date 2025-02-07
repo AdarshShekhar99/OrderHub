@@ -2,7 +2,6 @@ package com.service.ordering.order.dto.ResponseDto;
 
 
 import com.service.ordering.order.dto.CartItemDto;
-import com.service.ordering.order.dto.InventoryItemDto;
 import lombok.*;
 
 import java.util.List;
@@ -15,9 +14,9 @@ import java.util.List;
 @Builder
 public class InventoryResponseDto {
 
-    public List<InventoryItemDto> inventoryItemList;
+    public List<CartItemDto> inventoryItemList;
 
-    public List<InventoryItemDto> getInventoryItemList() {
+    public List<CartItemDto> getInventoryItemList() {
         return inventoryItemList;
     }
 
